@@ -1,0 +1,1210 @@
+[
+  {
+    "id": "vaug",
+    "line": 1,
+    "connections": [
+      {
+        "id": "h407",
+        "line": 1
+      }
+    ],
+    "name": "Vaughan Metropolitan Centre"
+  },
+  {
+    "id": "h407",
+    "line": 1,
+    "connections": [
+      {
+        "id": "vaug",
+        "line": 1
+      },
+      {
+        "id": "pion",
+        "line": 1
+      }
+    ],
+    "name": "Highway 407"
+  },
+  {
+    "id": "pion",
+    "line": 1,
+    "connections": [
+      {
+        "id": "h407",
+        "line": 1
+      },
+      {
+        "id": "youn",
+        "line": 1
+      }
+    ],
+    "name": "Pioneer Village"
+  },
+  {
+    "id": "youn",
+    "line": 1,
+    "connections": [
+      {
+        "id": "pion",
+        "line": 1
+      },
+      {
+        "id": "fiwe",
+        "line": 1
+      }
+    ],
+    "name": "York University"
+  },
+  {
+    "id": "fiwe",
+    "line": 1,
+    "connections": [
+      {
+        "id": "youn",
+        "line": 1
+      },
+      {
+        "id": "dopa",
+        "line": 1
+      }
+    ],
+    "name": "Finch West"
+  },
+  {
+    "id": "dopa",
+    "line": 1,
+    "connections": [
+      {
+        "id": "fiwe",
+        "line": 1
+      },
+      {
+        "id": "down",
+        "line": 1
+      }
+    ],
+    "name": "Downsview Park"
+  },
+  {
+    "id": "down",
+    "line": 1,
+    "connections": [
+      {
+        "id": "dopa",
+        "line": 1
+      },
+      {
+        "id": "wils",
+        "line": 1
+      }
+    ],
+    "name": "Sheppard West (was Downsview)"
+  },
+  {
+    "id": "wils",
+    "line": 1,
+    "connections": [
+      {
+        "id": "down",
+        "line": 1
+      },
+      {
+        "id": "york",
+        "line": 1
+      }
+    ],
+    "name": "Wilson"
+  },
+  {
+    "id": "york",
+    "line": 1,
+    "connections": [
+      {
+        "id": "wils",
+        "line": 1
+      },
+      {
+        "id": "laww",
+        "line": 1
+      }
+    ],
+    "name": "Yorkdale"
+  },
+  {
+    "id": "laww",
+    "line": 1,
+    "connections": [
+      {
+        "id": "york",
+        "line": 1
+      },
+      {
+        "id": "glen",
+        "line": 1
+      }
+    ],
+    "name": "Lawrence West"
+  },
+  {
+    "id": "glen",
+    "line": 1,
+    "connections": [
+      {
+        "id": "laww",
+        "line": 1
+      },
+      {
+        "id": "eglw",
+        "line": 1
+      }
+    ],
+    "name": "Glencairn"
+  },
+  {
+    "id": "eglw",
+    "line": 1,
+    "connections": [
+      {
+        "id": "glen",
+        "line": 1
+      },
+      {
+        "id": "stcw",
+        "line": 1
+      }
+    ],
+    "name": "Eglinton West"
+  },
+  {
+    "id": "stcw",
+    "line": 1,
+    "connections": [
+      {
+        "id": "eglw",
+        "line": 1
+      },
+      {
+        "id": "dupo",
+        "line": 1
+      }
+    ],
+    "name": "St. Clair West"
+  },
+  {
+    "id": "dupo",
+    "line": 1,
+    "connections": [
+      {
+        "id": "stcw",
+        "line": 1
+      },
+      {
+        "id": "spa1",
+        "line": 1
+      }
+    ],
+    "name": "Dupont"
+  },
+  {
+    "id": "spa1",
+    "line": 1,
+    "connections": [
+      {
+        "id": "dupo",
+        "line": 1
+      },
+      {
+        "id": "spa2",
+        "line": 2
+      },
+      {
+        "id": "stg1",
+        "line": 1
+      }
+    ],
+    "name": "Spadina (Spadina Line)"
+  },
+  {
+    "id": "stg1",
+    "line": 1,
+    "connections": [
+      {
+        "id": "spa1",
+        "line": 1
+      },
+      {
+        "id": "muse",
+        "line": 1
+      },
+      {
+        "id": "stg2",
+        "line": 2
+      }
+    ],
+    "name": "St. George (Spadina Line)"
+  },
+  {
+    "id": "muse",
+    "line": 1,
+    "connections": [
+      {
+        "id": "stg1",
+        "line": 1
+      },
+      {
+        "id": "qupa",
+        "line": 1
+      }
+    ],
+    "name": "Museum"
+  },
+  {
+    "id": "qupa",
+    "line": 1,
+    "connections": [
+      {
+        "id": "muse",
+        "line": 1
+      },
+      {
+        "id": "stpa",
+        "line": 1
+      }
+    ],
+    "name": "Queen’s Park"
+  },
+  {
+    "id": "stpa",
+    "line": 1,
+    "connections": [
+      {
+        "id": "qupa",
+        "line": 1
+      },
+      {
+        "id": "osgo",
+        "line": 1
+      }
+    ],
+    "name": "St. Patrick"
+  },
+  {
+    "id": "osgo",
+    "line": 1,
+    "connections": [
+      {
+        "id": "stpa",
+        "line": 1
+      },
+      {
+        "id": "stan",
+        "line": 1
+      }
+    ],
+    "name": "Osgoode"
+  },
+  {
+    "id": "stan",
+    "line": 1,
+    "connections": [
+      {
+        "id": "osgo",
+        "line": 1
+      },
+      {
+        "id": "unio",
+        "line": 1
+      }
+    ],
+    "name": "St. Andrew"
+  },
+  {
+    "id": "unio",
+    "line": 1,
+    "connections": [
+      {
+        "id": "stan",
+        "line": 1
+      },
+      {
+        "id": "king",
+        "line": 1
+      }
+    ],
+    "name": "Union"
+  },
+  {
+    "id": "king",
+    "line": 1,
+    "connections": [
+      {
+        "id": "unio",
+        "line": 1
+      },
+      {
+        "id": "quee",
+        "line": 1
+      }
+    ],
+    "name": "King"
+  },
+  {
+    "id": "quee",
+    "line": 1,
+    "connections": [
+      {
+        "id": "king",
+        "line": 1
+      },
+      {
+        "id": "dund",
+        "line": 1
+      }
+    ],
+    "name": "Queen"
+  },
+  {
+    "id": "dund",
+    "line": 1,
+    "connections": [
+      {
+        "id": "quee",
+        "line": 1
+      },
+      {
+        "id": "coll",
+        "line": 1
+      }
+    ],
+    "name": "Dundas"
+  },
+  {
+    "id": "coll",
+    "line": 1,
+    "connections": [
+      {
+        "id": "dund",
+        "line": 1
+      },
+      {
+        "id": "well",
+        "line": 1
+      }
+    ],
+    "name": "College"
+  },
+  {
+    "id": "well",
+    "line": 1,
+    "connections": [
+      {
+        "id": "coll",
+        "line": 1
+      },
+      {
+        "id": "blo1",
+        "line": 1
+      }
+    ],
+    "name": "Wellesley"
+  },
+  {
+    "id": "blo1",
+    "line": 1,
+    "connections": [
+      {
+        "id": "well",
+        "line": 1
+      },
+      {
+        "id": "rose",
+        "line": 1
+      },
+      {
+        "id": "blo2",
+        "line": 2
+      }
+    ],
+    "name": "Bloor-Yonge (Yonge Line)"
+  },
+  {
+    "id": "rose",
+    "line": 1,
+    "connections": [
+      {
+        "id": "blo1",
+        "line": 1
+      },
+      {
+        "id": "summ",
+        "line": 1
+      }
+    ],
+    "name": "Rosedale"
+  },
+  {
+    "id": "summ",
+    "line": 1,
+    "connections": [
+      {
+        "id": "rose",
+        "line": 1
+      },
+      {
+        "id": "stcl",
+        "line": 1
+      }
+    ],
+    "name": "Summerhill"
+  },
+  {
+    "id": "stcl",
+    "line": 1,
+    "connections": [
+      {
+        "id": "summ",
+        "line": 1
+      },
+      {
+        "id": "davi",
+        "line": 1
+      }
+    ],
+    "name": "St. Clair"
+  },
+  {
+    "id": "davi",
+    "line": 1,
+    "connections": [
+      {
+        "id": "stcl",
+        "line": 1
+      },
+      {
+        "id": "egli",
+        "line": 1
+      }
+    ],
+    "name": "Davisville"
+  },
+  {
+    "id": "egli",
+    "line": 1,
+    "connections": [
+      {
+        "id": "davi",
+        "line": 1
+      },
+      {
+        "id": "lawr",
+        "line": 1
+      }
+    ],
+    "name": "Eglinton"
+  },
+  {
+    "id": "lawr",
+    "line": 1,
+    "connections": [
+      {
+        "id": "egli",
+        "line": 1
+      },
+      {
+        "id": "yomi",
+        "line": 1
+      }
+    ],
+    "name": "Lawrence"
+  },
+  {
+    "id": "yomi",
+    "line": 1,
+    "connections": [
+      {
+        "id": "lawr",
+        "line": 1
+      },
+      {
+        "id": "shy1",
+        "line": 1
+      }
+    ],
+    "name": "York Mills"
+  },
+  {
+    "id": "shy1",
+    "line": 1,
+    "connections": [
+      {
+        "id": "yomi",
+        "line": 1
+      },
+      {
+        "id": "nyce",
+        "line": 1
+      },
+      {
+        "id": "shy4",
+        "line": 4
+      }
+    ],
+    "name": "Sheppard-Yonge (Yonge Line)"
+  },
+  {
+    "id": "nyce",
+    "line": 1,
+    "connections": [
+      {
+        "id": "shy1",
+        "line": 1
+      },
+      {
+        "id": "finc",
+        "line": 1
+      }
+    ],
+    "name": "North York Centre"
+  },
+  {
+    "id": "finc",
+    "line": 1,
+    "connections": [
+      {
+        "id": "nyce",
+        "line": 1
+      }
+    ],
+    "name": "Finch"
+  },
+  {
+    "id": "kipl",
+    "line": 2,
+    "connections": [
+      {
+        "id": "isli",
+        "line": 2
+      }
+    ],
+    "name": "Kipling"
+  },
+  {
+    "id": "isli",
+    "line": 2,
+    "connections": [
+      {
+        "id": "kipl",
+        "line": 2
+      },
+      {
+        "id": "royo",
+        "line": 2
+      }
+    ],
+    "name": "Islington"
+  },
+  {
+    "id": "royo",
+    "line": 2,
+    "connections": [
+      {
+        "id": "isli",
+        "line": 2
+      },
+      {
+        "id": "olmi",
+        "line": 2
+      }
+    ],
+    "name": "Royal York"
+  },
+  {
+    "id": "olmi",
+    "line": 2,
+    "connections": [
+      {
+        "id": "royo",
+        "line": 2
+      },
+      {
+        "id": "jane",
+        "line": 2
+      }
+    ],
+    "name": "Old Mill"
+  },
+  {
+    "id": "jane",
+    "line": 2,
+    "connections": [
+      {
+        "id": "olmi",
+        "line": 2
+      },
+      {
+        "id": "runn",
+        "line": 2
+      }
+    ],
+    "name": "Jane"
+  },
+  {
+    "id": "runn",
+    "line": 2,
+    "connections": [
+      {
+        "id": "jane",
+        "line": 2
+      },
+      {
+        "id": "hipa",
+        "line": 2
+      }
+    ],
+    "name": "Runnymede"
+  },
+  {
+    "id": "hipa",
+    "line": 2,
+    "connections": [
+      {
+        "id": "runn",
+        "line": 2
+      },
+      {
+        "id": "keel",
+        "line": 2
+      }
+    ],
+    "name": "High Park"
+  },
+  {
+    "id": "keel",
+    "line": 2,
+    "connections": [
+      {
+        "id": "hipa",
+        "line": 2
+      },
+      {
+        "id": "dunw",
+        "line": 2
+      }
+    ],
+    "name": "Keele"
+  },
+  {
+    "id": "dunw",
+    "line": 2,
+    "connections": [
+      {
+        "id": "keel",
+        "line": 2
+      },
+      {
+        "id": "lans",
+        "line": 2
+      }
+    ],
+    "name": "Dundas West"
+  },
+  {
+    "id": "lans",
+    "line": 2,
+    "connections": [
+      {
+        "id": "dunw",
+        "line": 2
+      },
+      {
+        "id": "duff",
+        "line": 2
+      }
+    ],
+    "name": "Lansdowne"
+  },
+  {
+    "id": "duff",
+    "line": 2,
+    "connections": [
+      {
+        "id": "lans",
+        "line": 2
+      },
+      {
+        "id": "ossi",
+        "line": 2
+      }
+    ],
+    "name": "Dufferin"
+  },
+  {
+    "id": "ossi",
+    "line": 2,
+    "connections": [
+      {
+        "id": "duff",
+        "line": 2
+      },
+      {
+        "id": "chri",
+        "line": 2
+      }
+    ],
+    "name": "Ossington"
+  },
+  {
+    "id": "chri",
+    "line": 2,
+    "connections": [
+      {
+        "id": "ossi",
+        "line": 2
+      },
+      {
+        "id": "bath",
+        "line": 2
+      }
+    ],
+    "name": "Christie"
+  },
+  {
+    "id": "bath",
+    "line": 2,
+    "connections": [
+      {
+        "id": "chri",
+        "line": 2
+      },
+      {
+        "id": "spa2",
+        "line": 2
+      }
+    ],
+    "name": "Bathurst"
+  },
+  {
+    "id": "spa2",
+    "line": 2,
+    "connections": [
+      {
+        "id": "bath",
+        "line": 2
+      },
+      {
+        "id": "stg2",
+        "line": 2
+      },
+      {
+        "id": "spa1",
+        "line": 1
+      }
+    ],
+    "name": "Spadina (Bloor Line)"
+  },
+  {
+    "id": "stg2",
+    "line": 2,
+    "connections": [
+      {
+        "id": "spa2",
+        "line": 2
+      },
+      {
+        "id": "bay",
+        "line": 2
+      },
+      {
+        "id": "stg1",
+        "line": 1
+      }
+    ],
+    "name": "St. George (Bloor Line)"
+  },
+  {
+    "id": "bay",
+    "line": 2,
+    "connections": [
+      {
+        "id": "stg2",
+        "line": 2
+      },
+      {
+        "id": "blo2",
+        "line": 2
+      }
+    ],
+    "name": "Bay"
+  },
+  {
+    "id": "blo2",
+    "line": 2,
+    "connections": [
+      {
+        "id": "bay",
+        "line": 2
+      },
+      {
+        "id": "sher",
+        "line": 2
+      },
+      {
+        "id": "blo1",
+        "line": 1
+      }
+    ],
+    "name": "Bloor-Yonge (Bloor Line)"
+  },
+  {
+    "id": "sher",
+    "line": 2,
+    "connections": [
+      {
+        "id": "blo2",
+        "line": 2
+      },
+      {
+        "id": "cast",
+        "line": 2
+      }
+    ],
+    "name": "Sherbourne"
+  },
+  {
+    "id": "cast",
+    "line": 2,
+    "connections": [
+      {
+        "id": "sher",
+        "line": 2
+      },
+      {
+        "id": "broa",
+        "line": 2
+      }
+    ],
+    "name": "Castle Frank"
+  },
+  {
+    "id": "broa",
+    "line": 2,
+    "connections": [
+      {
+        "id": "cast",
+        "line": 2
+      },
+      {
+        "id": "ches",
+        "line": 2
+      }
+    ],
+    "name": "Broadview"
+  },
+  {
+    "id": "ches",
+    "line": 2,
+    "connections": [
+      {
+        "id": "broa",
+        "line": 2
+      },
+      {
+        "id": "pape",
+        "line": 2
+      }
+    ],
+    "name": "Chester"
+  },
+  {
+    "id": "pape",
+    "line": 2,
+    "connections": [
+      {
+        "id": "ches",
+        "line": 2
+      },
+      {
+        "id": "donl",
+        "line": 2
+      }
+    ],
+    "name": "Pape"
+  },
+  {
+    "id": "donl",
+    "line": 2,
+    "connections": [
+      {
+        "id": "pape",
+        "line": 2
+      },
+      {
+        "id": "gree",
+        "line": 2
+      }
+    ],
+    "name": "Donlands"
+  },
+  {
+    "id": "gree",
+    "line": 2,
+    "connections": [
+      {
+        "id": "donl",
+        "line": 2
+      },
+      {
+        "id": "coxw",
+        "line": 2
+      }
+    ],
+    "name": "Greenwood"
+  },
+  {
+    "id": "coxw",
+    "line": 2,
+    "connections": [
+      {
+        "id": "gree",
+        "line": 2
+      },
+      {
+        "id": "wood",
+        "line": 2
+      }
+    ],
+    "name": "Coxwell"
+  },
+  {
+    "id": "wood",
+    "line": 2,
+    "connections": [
+      {
+        "id": "coxw",
+        "line": 2
+      },
+      {
+        "id": "main",
+        "line": 2
+      }
+    ],
+    "name": "Woodbine"
+  },
+  {
+    "id": "main",
+    "line": 2,
+    "connections": [
+      {
+        "id": "wood",
+        "line": 2
+      },
+      {
+        "id": "vipa",
+        "line": 2
+      }
+    ],
+    "name": "Main Street"
+  },
+  {
+    "id": "vipa",
+    "line": 2,
+    "connections": [
+      {
+        "id": "main",
+        "line": 2
+      },
+      {
+        "id": "ward",
+        "line": 2
+      }
+    ],
+    "name": "Victoria Park"
+  },
+  {
+    "id": "ward",
+    "line": 2,
+    "connections": [
+      {
+        "id": "vipa",
+        "line": 2
+      },
+      {
+        "id": "ken2",
+        "line": 2
+      }
+    ],
+    "name": "Warden"
+  },
+  {
+    "id": "ken2",
+    "line": 2,
+    "connections": [
+      {
+        "id": "ward",
+        "line": 2
+      },
+      {
+        "id": "ken3",
+        "line": 3
+      }
+    ],
+    "name": "Kennedy (Subway)"
+  },
+  {
+    "id": "ken3",
+    "line": 3,
+    "connections": [
+      {
+        "id": "lawe",
+        "line": 3
+      },
+      {
+        "id": "ken2",
+        "line": 2
+      }
+    ],
+    "name": "Kennedy (RT)"
+  },
+  {
+    "id": "lawe",
+    "line": 3,
+    "connections": [
+      {
+        "id": "ken3",
+        "line": 3
+      },
+      {
+        "id": "elle",
+        "line": 3
+      }
+    ],
+    "name": "Lawrence East"
+  },
+  {
+    "id": "elle",
+    "line": 3,
+    "connections": [
+      {
+        "id": "lawe",
+        "line": 3
+      },
+      {
+        "id": "midl",
+        "line": 3
+      }
+    ],
+    "name": "Ellesmere"
+  },
+  {
+    "id": "midl",
+    "line": 3,
+    "connections": [
+      {
+        "id": "elle",
+        "line": 3
+      },
+      {
+        "id": "scce",
+        "line": 3
+      }
+    ],
+    "name": "Midland"
+  },
+  {
+    "id": "scce",
+    "line": 3,
+    "connections": [
+      {
+        "id": "midl",
+        "line": 3
+      },
+      {
+        "id": "mcco",
+        "line": 3
+      }
+    ],
+    "name": "Scarborough Centre"
+  },
+  {
+    "id": "mcco",
+    "line": 3,
+    "connections": [
+      {
+        "id": "scce",
+        "line": 3
+      }
+    ],
+    "name": "McCowan"
+  },
+  {
+    "id": "shy4",
+    "line": 4,
+    "connections": [
+      {
+        "id": "bayv",
+        "line": 4
+      },
+      {
+        "id": "shy1",
+        "line": 1
+      }
+    ],
+    "name": "Sheppard-Yonge (Sheppard Line)"
+  },
+  {
+    "id": "bayv",
+    "line": 4,
+    "connections": [
+      {
+        "id": "shy4",
+        "line": 4
+      },
+      {
+        "id": "bess",
+        "line": 4
+      }
+    ],
+    "name": "Bayview"
+  },
+  {
+    "id": "bess",
+    "line": 4,
+    "connections": [
+      {
+        "id": "bayv",
+        "line": 4
+      },
+      {
+        "id": "lesl",
+        "line": 4
+      }
+    ],
+    "name": "Bessarion"
+  },
+  {
+    "id": "lesl",
+    "line": 4,
+    "connections": [
+      {
+        "id": "bess",
+        "line": 4
+      },
+      {
+        "id": "domi",
+        "line": 4
+      }
+    ],
+    "name": "Leslie"
+  },
+  {
+    "id": "domi",
+    "line": 4,
+    "connections": [
+      {
+        "id": "lesl",
+        "line": 4
+      }
+    ],
+    "name": "Don Mills"
+  }
+]

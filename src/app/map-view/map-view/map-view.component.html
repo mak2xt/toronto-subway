@@ -1,0 +1,10 @@
+<svg height="700" width="1240" xmlns:svg="http://www.w3.org/1999/html" (click)="shrinkListView()">
+  <svg:g *ngFor="let segment of segments" map-segment [data]="segment" (select)="onSelected($event)" />
+</svg>
+<map-selector *ngIf="selectorData.show"
+              [@fadeInOut]
+              [data]="selectorData.data"
+              [coords]="selectorData.coords"
+              (select)="onStation($event)"
+              (close)="onSelectorClose()"
+></map-selector>

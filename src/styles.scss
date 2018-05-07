@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+@import "app/shared/_shared.scss";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+  background-color: #fff;
+  margin: 0;
+  height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: $normal;
+  font-size: 1em;
+}
+
+.flex_container_row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex_container_column {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  &.primary {
+    color: #fff;
+    background-color: #1073b6;
+    font-size: 0.9em;
+    width: 55px;
+    height: 30px;
+  }
+  &.wide {
+    width: 80px;
+  }
+  &.disabled {
+    background-color: #ccc;
+  }
+}

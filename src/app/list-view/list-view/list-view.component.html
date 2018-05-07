@@ -1,0 +1,21 @@
+<div *ngIf="pathList.distance !== 0" class="list-view flex_container_column">
+  <div   class="header flex_container_row">
+    <h2>{{from.name}} to {{to.name}}</h2>
+  </div>
+  <div *ngIf="!listViewState.isHidden" [@slideInOut]="slideInState" class="flex_container_column">
+    <div (click)="onExpand()" class="show-hide">
+      <p *ngIf="!listViewState.isExpanded">Show all stations</p>
+      <p *ngIf="listViewState.isExpanded">Show less</p>
+    </div>
+    <div class="list flex_container_column">
+      <list-section *ngFor="let item of pathList.stations | listTransformer:listViewState.isExpanded"
+                    [station]="item"
+                    [@listExpand]="stateName"
+      ></list-section>
+    </div>
+  </div>
+  <div class="footer">
+    <p *ngIf="from">Travel time: {{pathList.distance}}</p>
+    <button class="btn primary wide" (click)="onHide()">{{(listViewState.isHidden) ? "Show" : "Hide"}} list</button>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+.circle {
+  cursor: pointer;
+  &:hover {
+    stroke: black;
+  }
+  &.active {
+    fill: black;
+  }
+}

@@ -1,0 +1,30 @@
+.app {
+  position: relative;
+  height: 100%;
+  margin: 0 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+}
+
+.picker {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+map-view {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

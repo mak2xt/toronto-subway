@@ -1,0 +1,33 @@
+@import "../../shared/_shared.scss";
+
+.map-selector {
+  position: absolute;
+  background-color: white;
+  box-shadow: $container-shadow;
+  border-radius: 3px;
+}
+
+$item-height: 35px;
+$item-border-color: hsl(176, 100%, 24%);
+
+.item {
+  flex: 1;
+  flex-basis: 0;
+  height: $item-height;
+  width: 50px;
+  line-height: $item-height;
+  text-align: center;
+  border-left: 1px solid $item-border-color;
+  border-right: 1px solid $item-border-color;
+  cursor: pointer;
+  &:first-of-type {
+    border-left: none;
+  }
+  &:last-of-type {
+    border-right: none;
+  }
+  &:hover {
+    background-color: #ecf5fc;
+    color: #366ea9;
+  }
+}

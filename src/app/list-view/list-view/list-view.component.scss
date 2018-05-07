@@ -1,0 +1,71 @@
+
+@import "../../shared/shared";
+
+$view-padding: 20px;
+
+.list-view {
+  background-color: #fff;
+  box-shadow: $container-shadow;
+  border-radius: 3px;
+  max-height: calc(100vh - 40px);
+  transition: all 0.5s linear;
+  min-width: 300px;
+}
+
+.header {
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+  padding: $view-padding 0;
+  margin: 0 $view-padding;
+  &>h2 {
+    font-weight: $bold;
+    color: $dark-text;
+    margin: 0;
+    font-size: 1.3em;
+  }
+}
+
+.list {
+  flex: 100;
+  padding: 10px $view-padding;
+  overflow: auto;
+  transition: all 0.6s linear;
+
+}
+
+.list.not-expanded {
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(54, 110, 169, 0.7);
+  }
+  &>p {
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.footer {
+  flex: 1;
+  background: $footer-background;
+  padding: $view-padding;
+  &>p {
+    float: left;
+    color: $dark-text;
+    margin: 0;
+  }
+  &>.btn {
+    float: right;
+  }
+  z-index: 10;
+}
+
+.show-hide {
+  background-color: #f0f2f5;
+  margin: 5px $view-padding 0 $view-padding;
+  cursor: pointer;
+  &>p {
+    margin: 0;
+    text-align: center;
+    color: $grey-text;
+  }
+}

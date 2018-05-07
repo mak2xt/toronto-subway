@@ -1,0 +1,5 @@
+<div [style.height]="height"
+     class="dropdown-container flex_container_column"
+     (transitionend)="onClose()">
+  <div class="dropdown-item" [style.height]="itemHeight + 'px'" *ngFor="let item of data" (click)="selectItem(item)">{{item.label}}</div>
+</div>

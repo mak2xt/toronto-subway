@@ -1,0 +1,46 @@
+
+@import "../../shared/shared";
+
+$input-horiz-margin: 10px;
+$container-width: 400px;
+
+.station-picker {
+  width: $container-width;
+  box-shadow: $container-shadow;
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+
+.input-row {
+  height: 35px;
+  padding: 10px 0;
+  position: relative;
+  & tsbw-input {
+    flex: 1;
+    margin: 0 $input-horiz-margin;
+  }
+  & .station-picker-dropdown {
+    position: absolute;
+    top: 100%;
+    width: $container-width / 2 - 2 * $input-horiz-margin;
+    &.left {
+      left: $input-horiz-margin;
+    }
+    &.right {
+      right: $input-horiz-margin;
+    }
+  }
+}
+
+.submit-container {
+  padding: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  background: $footer-background;
+  & .err-msg {
+    margin: 0;
+    color: $error-text;
+    flex: 1;
+  }
+}

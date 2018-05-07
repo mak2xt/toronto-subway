@@ -1,0 +1,35 @@
+<form  class="flex_container_column station-picker"
+       [formGroup]="stationForm"
+       (ngSubmit)="onSubmit()">
+  <div class="flex_container_row input-row" (clickOutside)="closeDropdown('from') || closeDropdown('to')">
+    <tsbw-input [control]="fromControl"
+                [placehld]="'from'"
+                (click)="openDropdown('from')"
+                (focusin)="emptyInput('from')"
+    ></tsbw-input>
+    <tsbw-input [control]="toControl"
+                [placehld]="'to'"
+                (click)="openDropdown('to')"
+                (focusin)="emptyInput('to')"
+    ></tsbw-input>
+    <tsbw-dropdown class="station-picker-dropdown left"
+                   *ngIf="(dropdownState$ | async)?.from"
+                   [show]="5"
+                   [data]="dropdownStationsData.from"
+                   (select)="onStationSelected($event, 'from')"
+                   (close)="closeDropdown('from')"
+    ></tsbw-dropdown>
+    <tsbw-dropdown class="station-picker-dropdown right"
+                   *ngIf="(dropdownState$ | async)?.to"
+                   [show]="5"
+                   [data]="dropdownStationsData.to"
+                   (select)="onStationSelected($event, 'to')"
+                   (close)="closeDropdown('to')"
+    ></tsbw-dropdown>
+  </div>
+  <div class="submit-container flex_container_row">
+    <p class="err-msg" *ngIf="(formErr$ | async)?.err">{{(formErr$ | async)?.text}}</p>
+    <button class="btn primary" type="submit">Go</button>
+  </div>
+</form>
+
