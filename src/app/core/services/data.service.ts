@@ -6,6 +6,6 @@ import { Station } from "./path.service";
 export class DataService {
   constructor(private httpClient: HttpClient) {}
   getStations() {
-    return this.httpClient.get<Station[]>("/assets/stations.json");
+    return this.httpClient.get<Station[]>("assets/stations.json");
   }
 }
