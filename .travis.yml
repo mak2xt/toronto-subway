@@ -4,7 +4,7 @@ node_js:
 before_script:
   - npm install -g @angular/cli@1.7.3
 script:
-  - ng build --prod --aot --base-href /myUrl/
+  - ng build --prod --aot --base-href /toronto-subway/
 deploy:
   provider: pages
   skip_cleanup: true
