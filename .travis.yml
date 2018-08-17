@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "8.11.4"
+before_script:
+  - npm install -g @angular/cli@1.7.3
+script:
+  - ng build --prod --aot --base-href /myUrl/
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist
