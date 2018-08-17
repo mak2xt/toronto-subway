@@ -17,6 +17,7 @@ import {
   SlideInTransition,
   SlideOutTransition
 } from "@app/shared/animations/slide-in-out";
+import { Subscriptions, unsubscribeAll } from "@app/util/sub-management";
 
 interface PathListView {
   distance: number;
@@ -89,11 +90,7 @@ interface PathListView {
   ]
 })
 export class ListViewComponent implements OnDestroy {
-  subs: {
-    stations?: Subscription;
-    path?: Subscription;
-    listView?: Subscription;
-  } = {};
+  subs: Subscriptions = {};
   stationsList: Station[] = [];
   pathList: PathListView;
   from: Station;
@@ -155,9 +152,6 @@ export class ListViewComponent implements OnDestroy {
     return ret;
   }
   ngOnDestroy() {
-    for (let sub of Object.keys(this.subs)) {
-      console.log(sub);
-      this.subs[sub].unsubscribe();
-    }
+    unsubscribeAll(this.subs);
   }
 }

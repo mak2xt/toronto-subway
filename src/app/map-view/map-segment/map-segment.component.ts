@@ -1,10 +1,12 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
   OnInit,
-  Output
+  Output,
+  ViewChild
 } from "@angular/core";
 
 export interface LineCoords {
@@ -41,12 +43,11 @@ export interface MapSelect {
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ["./map-segment.component.scss"]
 })
-export class MapSegmentComponent implements OnInit {
-  textAdjustment: {
-    size: number; //em
-    left: number;
-  };
+export class MapSegmentComponent implements OnInit, AfterViewInit {
+  textSize = 8;
   constructor() {}
+
+  @ViewChild("text") svg;
 
   @Input() data: MapSegmentData;
   @Output() select = new EventEmitter<MapSelect>();
@@ -76,6 +77,8 @@ export class MapSegmentComponent implements OnInit {
     switch (this.data.textPos) {
       case "right":
         return `translate(4, -6)`;
+      case "left":
+        return ``;
       case "none":
         return "scale(0)";
       default:
@@ -85,9 +88,19 @@ export class MapSegmentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.textAdjustment = {
-      size: 8,
-      left: this.data.name.length
-    };
+    if (this.data.textPos === "bottom") {
+      this.textSize = 9;
+    }
+  }
+
+  ngAfterViewInit() {
+    if (this.data.textPos === "left") {
+      let width = this.svg.nativeElement.getBBox().width;
+      this.svg.nativeElement.setAttribute(
+        "transform",
+        `translate(-${width + 20}, -6)`
+      );
+    }
+    // console.log(this.svg.nativeElement.getBBox());
   }
 }

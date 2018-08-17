@@ -1,9 +1,7 @@
-![demo](https://github.com/mak2xt/toronto-subway/blob/master/demo.gif)
-
 # Synopsis
 
 I've been always wondering why Toronto doesn't have good subway map that can help people, especially newcomers, with their routes.
-So, I decided to write my own.
+So, I decided to write my own. Made with accessibility in mind.
 
 # Installation
 ```
@@ -21,7 +19,7 @@ npm install
 
 # ToDo
 
-- [ ] add line 3 to the map
-- [ ] use ttc schedule to calculate travel times
+- [x] add line 3 to the map
+- [x] ~~use ttc schedule to calculate travel times~~ ttc is so unpredictable that this makes no sense
 - [ ] use ttc subway shapefiles
-- [ ] fix overlaying station labels and points
+- [x] fix overlaying station labels and points

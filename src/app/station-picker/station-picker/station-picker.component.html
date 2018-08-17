@@ -5,12 +5,8 @@
     <tsbw-input [control]="fromControl"
                 [placehld]="'from'"
                 (click)="openDropdown('from')"
-                (focusin)="emptyInput('from')"
-    ></tsbw-input>
-    <tsbw-input [control]="toControl"
-                [placehld]="'to'"
-                (click)="openDropdown('to')"
-                (focusin)="emptyInput('to')"
+                (focusin)="emptyInput('from') || openDropdown('from')"
+                label="Start station"
     ></tsbw-input>
     <tsbw-dropdown class="station-picker-dropdown left"
                    *ngIf="(dropdownState$ | async)?.from"
@@ -19,6 +15,12 @@
                    (select)="onStationSelected($event, 'from')"
                    (close)="closeDropdown('from')"
     ></tsbw-dropdown>
+    <tsbw-input [control]="toControl"
+                [placehld]="'to'"
+                (click)="openDropdown('to')"
+                (focusin)="emptyInput('to') || openDropdown('to')"
+                label="End station"
+    ></tsbw-input>
     <tsbw-dropdown class="station-picker-dropdown right"
                    *ngIf="(dropdownState$ | async)?.to"
                    [show]="5"

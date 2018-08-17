@@ -1,1 +1,1 @@
-<input type="text" [formControl]="control" placeholder="{{placehld}}">
+<input type="text" [formControl]="control" placeholder="{{placehld}}" [attr.aria-label]="label" [attr.aria-invalid]="!(valid$ | async)">

@@ -4,6 +4,12 @@ import {
 } from "@app/map-view/map-segment/map-segment.component";
 import { Station } from "@app/core";
 import { lineColors } from "@app/core/constants/common";
+import {
+  removeLineReference,
+  spadinaLineStations,
+  youngLineStations
+} from "@app/map-view/segments-calculator/helper";
+import { arrayObjectIndexOf } from "@app/util/util";
 
 type ChangeProps = Array<keyof LineCoords>;
 
@@ -21,48 +27,9 @@ export class SegmentsCalculator {
   youngLineStations: string[];
   spadinaLineStations: string[];
   constructor() {
-    this.youngLineStations = [
-      "king",
-      "quee",
-      "dund",
-      "coll",
-      "well",
-      "blo1",
-      "rose",
-      "summ",
-      "stcl",
-      "davi",
-      "egli",
-      "lawr",
-      "yomi",
-      "shy1",
-      "nyce",
-      "finc"
-    ].reverse();
+    this.youngLineStations = youngLineStations;
 
-    this.spadinaLineStations = [
-      "vaug",
-      "h407",
-      "pion",
-      "youn",
-      "fiwe",
-      "dopa",
-      "down",
-      "wils",
-      "york",
-      "laww",
-      "glen",
-      "eglw",
-      "stcw",
-      "dupo",
-      "spa1",
-      "stg1",
-      "muse",
-      "qupa",
-      "stpa",
-      "osgo",
-      "stan"
-    ];
+    this.spadinaLineStations = spadinaLineStations;
   }
   private calcNextSegmentPos(
     prevPos: LineCoords,
@@ -87,14 +54,6 @@ export class SegmentsCalculator {
     };
   }
 
-  private removeLineReference(name: string): string {
-    let parenthesisIndex = name.indexOf("(");
-    if (parenthesisIndex === -1) {
-      return name;
-    }
-    return name.slice(0, parenthesisIndex).trim();
-  }
-
   private calcSegments(
     stations: Station[],
     props: SegmentsProps
@@ -105,7 +64,7 @@ export class SegmentsCalculator {
 
     let initSegment = {
       id: stations[0].id,
-      name: this.removeLineReference(stations[0].name),
+      name: removeLineReference(stations[0].name),
       coords: props.initCoords,
       color: props.color,
       textPos: props.textPos,
@@ -150,7 +109,7 @@ export class SegmentsCalculator {
         }
         acc.push({
           id: cur.id,
-          name: this.removeLineReference(cur.name),
+          name: removeLineReference(cur.name),
           coords: {
             from: fromPos,
             to: toPos
@@ -184,7 +143,7 @@ export class SegmentsCalculator {
     intersection: { x: number; y: number }
   ) {
     let change = Math.abs(this.segmentLength / 2);
-    return this.calcSegments(stations.filter(el => el.line === 4), {
+    let segments = this.calcSegments(stations.filter(el => el.line === 4), {
       initCoords: this.calcInitCoords(
         {
           x1: intersection.x,
@@ -200,6 +159,39 @@ export class SegmentsCalculator {
       changeNum: change,
       textPos: "bottom"
     });
+
+    segments[0].textPos = "none";
+
+    return segments;
+  }
+
+  private getScarboroughLineSegments(
+    stations: Station[],
+    intersection: { x: number; y: number }
+  ) {
+    let change = -Math.abs(this.segmentLength / 2);
+
+    let segments = this.calcSegments(stations.filter(el => el.line === 3), {
+      initCoords: this.calcInitCoords(
+        {
+          x1: intersection.x,
+          x2: intersection.x,
+          y1: intersection.y,
+          y2: intersection.y
+        },
+        ["y2"],
+        change
+      ),
+      color: lineColors["3"],
+      change: ["y1", "y2"],
+      changeNum: change,
+      textPos: "left"
+    });
+
+    //hides Kennedy name
+    segments[0].textPos = "none";
+
+    return segments;
   }
 
   private getSpadinaLineSegments(
@@ -230,6 +222,10 @@ export class SegmentsCalculator {
         textPos: "right"
       }
     );
+
+    let museumIndex = arrayObjectIndexOf(postBloorSegments, "muse", "id");
+    postBloorSegments[museumIndex].textPos = "left";
+
     let preBloorSegments = this.calcSegments(
       stations.filter(el => preBloorLine.includes(el.id)).reverse(),
       {
@@ -263,8 +259,8 @@ export class SegmentsCalculator {
     let color = lineColors["1"];
     let change = Math.abs(this.segmentLength / 2);
     let bloorIndex = this.youngLineStations.indexOf("blo1");
-    let preBloorLine = this.youngLineStations.slice(0, bloorIndex);
-    let postBloorLine = this.youngLineStations.slice(bloorIndex);
+    let preBloorLine = this.youngLineStations.slice(0, bloorIndex); //finch -> bloor
+    let postBloorLine = this.youngLineStations.slice(bloorIndex); //bloor -> union
     let postBloorSegments = this.calcSegments(
       stations.filter(el => postBloorLine.includes(el.id)).reverse(),
       {
@@ -284,6 +280,10 @@ export class SegmentsCalculator {
         textPos: "right"
       }
     );
+
+    let wellsleyIndex = arrayObjectIndexOf(postBloorSegments, "well", "id");
+    postBloorSegments[wellsleyIndex].textPos = "left";
+
     let preBloorSegments = this.calcSegments(
       stations.filter(el => preBloorLine.includes(el.id)),
       {
@@ -303,6 +303,10 @@ export class SegmentsCalculator {
         textPos: "right"
       }
     );
+
+    let sheppardYoungIndex = arrayObjectIndexOf(preBloorSegments, "shy1", "id");
+    preBloorSegments[sheppardYoungIndex].textPos = "left";
+
     return postBloorSegments.concat(...preBloorSegments);
   }
 
@@ -324,7 +328,8 @@ export class SegmentsCalculator {
 
     let line2Intersections = {
       stgeorge: this.getStationCoords(line2Segments, "stg2"),
-      bloor: this.getStationCoords(line2Segments, "blo2")
+      bloor: this.getStationCoords(line2Segments, "blo2"),
+      kennedy: this.getStationCoords(line2Segments, "ken2")
     };
     let youngLineSegments = this.getYoungLineSegments(
       stations,
@@ -338,8 +343,14 @@ export class SegmentsCalculator {
       stations,
       this.getStationCoords(youngLineSegments, "shy1")
     );
+    let scarboroughLineSegments = this.getScarboroughLineSegments(
+      stations,
+      line2Intersections.kennedy
+    );
+
     let stAndrewCoords = this.getStationCoords(spadinaLineSegments, "stan");
     let kingCoords = this.getStationCoords(youngLineSegments, "king");
+
     let unionSegment: MapSegmentData = {
       id: "unio",
       name: "Union",
@@ -365,6 +376,7 @@ export class SegmentsCalculator {
       .concat(...youngLineSegments)
       .concat(...line2Segments)
       .concat(unionSegment)
-      .concat(...sheppardLineSegments);
+      .concat(...sheppardLineSegments)
+      .concat(...scarboroughLineSegments);
   }
 }

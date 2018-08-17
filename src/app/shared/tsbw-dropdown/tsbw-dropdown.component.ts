@@ -27,7 +27,40 @@ export class TSBWDropdownComponent implements OnInit, AfterViewInit, OnChanges {
   height: string = "1px";
   itemHeight = 50;
   closingState: boolean = false;
+  activeIndex = 0;
+  active: DropdownInput;
+  mainElementFocused: boolean;
   constructor() {}
+
+  private setActive(index: number) {
+    this.active = this.data[index];
+  }
+
+  nextItem($event: Event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    if (this.activeIndex < this.data.length - 1) {
+      this.activeIndex++;
+      this.setActive(this.activeIndex);
+    }
+  }
+
+  prevItem($event: Event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    if (this.activeIndex > 0) {
+      this.activeIndex--;
+      this.setActive(this.activeIndex);
+    }
+  }
+
+  isAccessebilityFocused(id: string) {
+    return this.mainElementFocused && id === this.active.id;
+  }
+
+  focus(b: boolean) {
+    this.mainElementFocused = b;
+  }
 
   selectItem(item: DropdownInput) {
     this.select.emit(item);
@@ -58,5 +91,7 @@ export class TSBWDropdownComponent implements OnInit, AfterViewInit, OnChanges {
       this.setDropdownHeight();
     }
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.setActive(this.activeIndex);
+  }
 }

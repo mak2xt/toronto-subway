@@ -9,7 +9,6 @@ import { Store } from "@ngrx/store";
 import { UPDATE_PATH } from "@app/state/path/path-actions";
 import { PathService } from "@app/core/";
 import { UPDATE_LIST_VIEW } from "app/state/list-view/list-view-actions";
-import { Subscription } from "rxjs/Subscription";
 import {
   DropdownState,
   FormErr,
@@ -26,6 +25,7 @@ import {
 } from "@app/station-picker/state/actions";
 import { Subject } from "rxjs/Subject";
 import { map, withLatestFrom } from "rxjs/operators";
+import { Subscriptions, unsubscribeAll } from "@app/util/sub-management";
 
 @Component({
   selector: "station-picker",
@@ -46,9 +46,7 @@ export class StationPickerComponent implements OnInit, OnDestroy {
   selectedStation$: Observable<SelectedStations>;
   submit = new Subject<void>();
   stations: Station[];
-  subs: {
-    [key: string]: Subscription;
-  } = {};
+  subs: Subscriptions = {};
   constructor(
     private cService: StationPickerService,
     private store: Store<AppState>,
@@ -167,9 +165,7 @@ export class StationPickerComponent implements OnInit, OnDestroy {
     this.toControl.setValidators(this.cService.inputValidator(this.stations));
   }
   ngOnDestroy() {
-    for (let key of Object.keys(this.subs)) {
-      this.subs[key].unsubscribe();
-    }
+    unsubscribeAll(this.subs);
   }
   ngOnInit() {
     this.dropdownStationsData = {

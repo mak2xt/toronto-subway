@@ -53,7 +53,8 @@ export class MapViewComponent implements OnInit, OnDestroy {
     this.path = this.store.select("path").subscribe(path => {
       this.segments = this.cService.markSegmentsActive(
         this.segments,
-        path.path
+        this.cService.withTransferIDs(path.path)
+        // path.path
       );
     });
 

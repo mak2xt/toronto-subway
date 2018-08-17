@@ -1,5 +1,22 @@
 <div [style.height]="height"
      class="dropdown-container flex_container_column"
+     role="listbox"
+     aria-multiselectable="false"
+     [attr.aria-activedescendant]="active.id"
+     tabindex="0"
+     (keyup.arrowdown)="nextItem($event)"
+     (keyup.arrowup)="prevItem($event)"
+     (keyup.enter)="selectItem(active)"
+     (focusin)="focus(true)"
+     (focusout)="focus(false)"
      (transitionend)="onClose()">
-  <div class="dropdown-item" [style.height]="itemHeight + 'px'" *ngFor="let item of data" (click)="selectItem(item)">{{item.label}}</div>
+  <div
+    class="dropdown-item"
+    [style.height]="itemHeight + 'px'"
+    [class.focused]="isAccessebilityFocused(item.id)"
+    *ngFor="let item of data"
+    [id]="item.id"
+    (click)="selectItem(item)"
+    role="option"
+  >{{item.label}}</div>
 </div>

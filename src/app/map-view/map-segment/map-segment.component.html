@@ -27,6 +27,7 @@
 />
 <svg:text [attr.x]="data.coords.from.x2 + 8"
           [attr.y]="data.coords.from.y2 + 10"
-          [attr.font-size]="textAdjustment.size"
+          [attr.font-size]="textSize"
           [attr.transform]="getTextTransformString()"
+          #text
 >{{data.name}}</svg:text>
