@@ -10,6 +10,8 @@ import { MapViewModule } from "./map-view/map-view.module";
 import { reducers } from "@app/state/state";
 import { EffectsModule } from "@ngrx/effects";
 import { InitEffect } from "@app/state/init-state";
+import { ServiceWorkerModule } from "@angular/service-worker";
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +22,8 @@ import { InitEffect } from "@app/state/init-state";
     EffectsModule.forRoot([InitEffect]),
     StationPickerModule,
     ListViewModule,
-    MapViewModule
+    MapViewModule,
+    environment.production ? ServiceWorkerModule.register("ngsw-worker.js") : []
   ],
   providers: [],
   bootstrap: [AppComponent]
