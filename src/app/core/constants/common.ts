@@ -11,3 +11,8 @@ export const lineColors: LineColor = {
   3: "#0a6797",
   4: "#8b1962"
 };
+
+export const MapSize = {
+  x: 1240,
+  y: 700
+};

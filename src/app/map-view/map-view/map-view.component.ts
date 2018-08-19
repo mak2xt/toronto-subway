@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit
+} from "@angular/core";
 import { MapViewService } from "./map-view.service";
 import {
   MapSegmentData,
@@ -16,6 +22,11 @@ import {
   FadeInTransition,
   FadeOutTransition
 } from "@app/shared/animations/fade-in-out";
+import { MapSize } from "@app/core/constants/common";
+import {
+  getCenteringDeltas,
+  RectangleCoords
+} from "@app/map-view/rectangle-geometry";
 
 @Component({
   selector: "map-view",
@@ -29,7 +40,7 @@ import {
     ])
   ]
 })
-export class MapViewComponent implements OnInit, OnDestroy {
+export class MapViewComponent implements OnInit, OnDestroy, AfterViewInit {
   segments: MapSegmentData[] = [];
   stations: Subscription;
   path: Subscription;
@@ -40,10 +51,22 @@ export class MapViewComponent implements OnInit, OnDestroy {
     show: boolean;
   };
   choosenStations: { from?: string; to?: string } = {};
+  translate = {
+    scale: 1,
+    x: 0,
+    y: 0
+  };
+  moveAdjustments = {
+    scale: 1,
+    deltaX: 0,
+    deltaY: 0
+  };
+  mapSize = MapSize;
   constructor(
     private cService: MapViewService,
     private pathService: PathService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private elRef: ElementRef
   ) {
     this.stations = this.store.select("stations").subscribe(stations => {
       this.stationsList = stations;
@@ -83,6 +106,20 @@ export class MapViewComponent implements OnInit, OnDestroy {
       this.choosenStations = {};
     }
   }
+  onPinchPan(event: any) {
+    this.translate.scale = this.moveAdjustments.scale * event.scale;
+    this.translate.x =
+      this.moveAdjustments.deltaX + event.deltaX / this.translate.scale;
+    this.translate.y =
+      this.moveAdjustments.deltaY + event.deltaY / this.translate.scale;
+  }
+  onPinchPanEnd() {
+    this.moveAdjustments = {
+      scale: this.translate.scale,
+      deltaX: this.translate.x,
+      deltaY: this.translate.y
+    };
+  }
   shrinkListView() {
     this.store.dispatch({
       type: UPDATE_LIST_VIEW,
@@ -95,5 +132,23 @@ export class MapViewComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.path.unsubscribe();
     this.stations.unsubscribe();
+  }
+  ngAfterViewInit() {
+    let viewRect = this.elRef.nativeElement.getBoundingClientRect();
+    let mapRect: RectangleCoords = {
+      top: viewRect.top,
+      right: viewRect.left + this.mapSize.x,
+      bottom: viewRect.top + this.mapSize.y,
+      left: viewRect.left
+    };
+
+    let deltas = getCenteringDeltas(viewRect, mapRect);
+
+    //macro-tick to calm down angular change detection
+    setTimeout(() => {
+      this.translate.x = deltas.deltaX;
+      this.translate.y = deltas.deltaY;
+      this.onPinchPanEnd();
+    });
   }
 }
