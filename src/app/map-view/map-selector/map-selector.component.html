@@ -1,5 +1,8 @@
-<div (clickOutside)="onClickOutside()" [ngStyle]="{'top': coords.y + 'px', 'left': coords.x + 'px'}" class="map-selector flex_container_row">
-  <div class="item" *ngFor="let option of data.options" (click)="onClick(option)">
+<div #container
+     (clickOutside)="onClickOutside()"
+     [ngStyle]="{'top': coords.y + 'px', 'left': coords.x + 'px'}"
+     class="map-selector flex_container_row">
+  <div role="button" class="item" *ngFor="let option of data.options" (click)="onClick(option)">
     {{option}}
   </div>
 </div>

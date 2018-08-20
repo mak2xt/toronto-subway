@@ -1,7 +1,3 @@
-import {
-  LineCoords,
-  MapSegmentData
-} from "@app/map-view/map-segment/map-segment.component";
 import { Station } from "@app/core";
 import { lineColors } from "@app/core/constants/common";
 import {
@@ -10,6 +6,27 @@ import {
   youngLineStations
 } from "@app/map-view/segments-calculator/helper";
 import { arrayObjectIndexOf } from "@app/util/util";
+
+export interface LineCoords {
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+}
+
+export interface MapSegmentData {
+  id: string; //station id
+  name: string; //station name
+  coords: {
+    from: LineCoords;
+    to: LineCoords;
+  };
+  rotate: number;
+  color: string;
+  textPos: "left" | "bottom" | "right" | "up" | "none";
+  active?: boolean;
+  enlarged?: boolean;
+}
 
 type ChangeProps = Array<keyof LineCoords>;
 

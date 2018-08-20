@@ -8,26 +8,7 @@ import {
   Output,
   ViewChild
 } from "@angular/core";
-
-export interface LineCoords {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-}
-
-export interface MapSegmentData {
-  id: string; //station id
-  name: string; //station name
-  coords: {
-    from: LineCoords;
-    to: LineCoords;
-  };
-  rotate: number;
-  color: string;
-  textPos: "left" | "bottom" | "right" | "up" | "none";
-  active?: boolean;
-}
+import { MapSegmentData } from "@app/map-view/segments-calculator/segments-calculator";
 
 export interface MapSelect {
   id: string;
@@ -45,6 +26,7 @@ export interface MapSelect {
 })
 export class MapSegmentComponent implements OnInit, AfterViewInit {
   textSize = 8;
+  circleStroke = 2;
   constructor() {}
 
   @ViewChild("text") svg;
@@ -91,6 +73,9 @@ export class MapSegmentComponent implements OnInit, AfterViewInit {
     if (this.data.textPos === "bottom") {
       this.textSize = 9;
     }
+    if (this.data.enlarged) {
+      this.circleStroke = 3;
+    }
   }
 
   ngAfterViewInit() {
@@ -101,6 +86,5 @@ export class MapSegmentComponent implements OnInit, AfterViewInit {
         `translate(-${width + 20}, -6)`
       );
     }
-    // console.log(this.svg.nativeElement.getBBox());
   }
 }

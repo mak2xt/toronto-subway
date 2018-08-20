@@ -1,14 +1,20 @@
 <div class="container">
   <svg [attr.height]="mapSize.y"
        [attr.width]="mapSize.x"
+       role="list"
        xmlns:svg="http://www.w3.org/1999/html"
        [style.transform]="'translate(' + translate.x + 'px, ' + translate.y + 'px) scale(' + translate.scale + ')' | safe:'style'"
        (pan)="onPinchPan($event)"
        (panend)="onPinchPanEnd()"
        (pinch)="onPinchPan($event)"
        (pinchend)="onPinchPanEnd()"
-       (click)="shrinkListView()">
-    <svg:g *ngFor="let segment of segments" map-segment [data]="segment" (select)="onSelected($event)" />
+       (click)="shrinkListView()"
+       aria-labelledby="map-title"
+       aria-describedby="map-desc"
+  >
+    <svg:title id="map-title">TTC Subway Map</svg:title>
+    <svg:desc id="map-desc"></svg:desc>
+    <svg:g role="listitem" *ngFor="let segment of segments" map-segment [data]="segment" (select)="onSelected($event)" />
   </svg>
 </div>
 <map-selector *ngIf="selectorData.show"

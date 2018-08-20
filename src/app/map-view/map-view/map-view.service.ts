@@ -11,6 +11,7 @@ import { TransferHelper } from "@app/map-view/transfer-helper";
 export class MapViewService {
   segmentsCalculator: SegmentsCalculator;
   transferHelper: TransferHelper;
+  terminalStations: string[];
   constructor() {
     this.segmentsCalculator = new SegmentsCalculator();
     this.transferHelper = new TransferHelper([
@@ -20,10 +21,29 @@ export class MapViewService {
       ["shy1", "shy4"],
       ["ken2", "ken3"]
     ]);
+    this.terminalStations = ["unio", "vaug", "finc", "domi", "kipl", "mcco"];
+  }
+
+  private markTransfers(segment: MapSegmentData) {
+    return this.transferHelper.hasTransfer(segment.id)
+      ? { ...segment, enlarged: true }
+      : segment;
+  }
+
+  private markTerminals(segment: MapSegmentData) {
+    return this.terminalStations.includes(segment.id)
+      ? { ...segment, enlarged: true }
+      : segment;
+  }
+
+  private composedMarkers(segment: MapSegmentData) {
+    return this.markTransfers(this.markTerminals(segment));
   }
 
   getSegments(stations: Station[]): MapSegmentData[] {
-    return this.segmentsCalculator.getSegments(stations);
+    return this.segmentsCalculator
+      .getSegments(stations)
+      .map(this.composedMarkers.bind(this));
   }
 
   getSelectorData(data: MapSelect) {

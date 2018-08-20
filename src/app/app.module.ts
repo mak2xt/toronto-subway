@@ -12,6 +12,7 @@ import { EffectsModule } from "@ngrx/effects";
 import { InitEffect } from "@app/state/init-state";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
+import { WINDOW_PROVIDERS } from "@app/core/window.wrapper";
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +26,7 @@ import { environment } from "../environments/environment";
     MapViewModule,
     environment.production ? ServiceWorkerModule.register("ngsw-worker.js") : []
   ],
-  providers: [],
+  providers: [WINDOW_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
