@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
+import { MapSelect } from "../map-segment/map-segment.component";
 import {
   MapSegmentData,
-  MapSelect
-} from "../map-segment/map-segment.component";
-import { SegmentsCalculator } from "@app/map-view/segments-calculator/segments-calculator";
+  SegmentsCalculator
+} from "@app/map-view/segments-calculator/segments-calculator";
 import { Station } from "@app/core";
 import { TransferHelper } from "@app/map-view/transfer-helper";
 

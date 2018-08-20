@@ -6,10 +6,7 @@ import {
   OnInit
 } from "@angular/core";
 import { MapViewService } from "./map-view.service";
-import {
-  MapSegmentData,
-  MapSelect
-} from "../map-segment/map-segment.component";
+import { MapSelect } from "../map-segment/map-segment.component";
 import { Station } from "../../core";
 import { Store } from "@ngrx/store";
 import { AppState } from "@app/state/state";
@@ -27,6 +24,7 @@ import {
   getCenteringDeltas,
   RectangleCoords
 } from "@app/map-view/rectangle-geometry";
+import { MapSegmentData } from "@app/map-view/segments-calculator/segments-calculator";
 
 @Component({
   selector: "map-view",
