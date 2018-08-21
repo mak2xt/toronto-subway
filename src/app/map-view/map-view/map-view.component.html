@@ -1,4 +1,4 @@
-<div class="container">
+<div class="input-container">
   <svg [attr.height]="mapSize.y"
        [attr.width]="mapSize.x"
        role="list"
@@ -8,7 +8,6 @@
        (panend)="onPinchPanEnd()"
        (pinch)="onPinchPan($event)"
        (pinchend)="onPinchPanEnd()"
-       (click)="shrinkListView()"
        aria-labelledby="map-title"
        aria-describedby="map-desc"
   >

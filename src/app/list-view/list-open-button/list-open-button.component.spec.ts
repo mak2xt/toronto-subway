@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ListViewComponent } from "./list-view.component";
+import { ListOpenButtonComponent } from "./list-open-button.component";
 
-describe("ListViewComponent", () => {
-  let component: ListViewComponent;
-  let fixture: ComponentFixture<ListViewComponent>;
+describe("ListOpenButtonComponent", () => {
+  let component: ListOpenButtonComponent;
+  let fixture: ComponentFixture<ListOpenButtonComponent>;
 
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [ListViewComponent]
+        declarations: [ListOpenButtonComponent]
       }).compileComponents();
     })
   );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListViewComponent);
+    fixture = TestBed.createComponent(ListOpenButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

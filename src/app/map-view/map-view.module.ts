@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   imports: [CommonModule, SharedModule, BrowserAnimationsModule],
-  exports: [MapViewComponent, MapSegmentComponent, MapSelectorComponent],
+  exports: [MapViewComponent],
   declarations: [MapViewComponent, MapSegmentComponent, MapSelectorComponent],
   providers: []
 })

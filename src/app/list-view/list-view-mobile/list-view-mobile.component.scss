@@ -1,0 +1,21 @@
+@import "../../shared/shared";
+
+.container {
+  position: relative;
+  margin: 30px auto;
+  width: 90%;
+}
+
+list-open-button {
+  position: absolute;
+  right: 10%;
+  top: 10px;
+}
+
+.list {
+  overflow: auto;
+  max-height: 60vh;
+  padding: 10px;
+  background-color: white;
+  box-shadow: $container-shadow;
+}

@@ -1,12 +1,19 @@
 import { Injectable } from "@angular/core";
 import { AbstractControl, ValidatorFn } from "@angular/forms";
-import { duplicateValues } from "../util/util";
-import { Station } from "../core";
+import { arrayObjectIndexOf, duplicateValues } from "../util/util";
+import { PathService, Station } from "../core";
 import { DropdownInput } from "../shared/tsbw-dropdown/tsbw-dropdown.component";
+import { AppState } from "@app/state/state";
+import { Store } from "@ngrx/store";
+import { UPDATE_PATH } from "@app/state/path/path-actions";
+import { SelectedStations } from "@app/station-picker/state/state";
 
 @Injectable()
 export class StationPickerService {
-  constructor() {}
+  constructor(
+    private pathService: PathService,
+    private store: Store<AppState>
+  ) {}
   shortifyStationName(name: string): string {
     return name.slice(0, 20);
   }
@@ -38,5 +45,35 @@ export class StationPickerService {
       }
       return null;
     };
+  }
+  filterStationList(stations: Station[], value: string): DropdownInput[] {
+    return stations.reduce(
+      (acc, cur) => {
+        let stationName = cur.name.toLowerCase();
+        if (stationName.indexOf(value.toLowerCase()) === 0) {
+          acc.push({
+            id: cur.id,
+            label: this.shortifyStationName(cur.name)
+          });
+        }
+        return acc;
+      },
+      [] as DropdownInput[]
+    );
+  }
+
+  getStationById(stations: Station[], id: string) {
+    return stations[arrayObjectIndexOf(stations, id, "id")];
+  }
+
+  publish(stations: Station[], selectedStations: SelectedStations) {
+    this.store.dispatch({
+      type: UPDATE_PATH,
+      payload: this.pathService.getPath(
+        stations,
+        selectedStations.from,
+        selectedStations.to
+      )
+    });
   }
 }

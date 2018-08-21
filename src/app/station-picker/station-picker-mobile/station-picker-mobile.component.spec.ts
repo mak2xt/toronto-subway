@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ListViewComponent } from "./list-view.component";
+import { StationPickerMobileComponent } from "./station-picker-mobile.component";
 
-describe("ListViewComponent", () => {
-  let component: ListViewComponent;
-  let fixture: ComponentFixture<ListViewComponent>;
+describe("StationPickerMobileComponent", () => {
+  let component: StationPickerMobileComponent;
+  let fixture: ComponentFixture<StationPickerMobileComponent>;
 
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [ListViewComponent]
+        declarations: [StationPickerMobileComponent]
       }).compileComponents();
     })
   );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListViewComponent);
+    fixture = TestBed.createComponent(StationPickerMobileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

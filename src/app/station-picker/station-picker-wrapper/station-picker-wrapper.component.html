@@ -1,0 +1,6 @@
+<div class="wrapper"
+     [class.mobile]="(mobile$ | async)"
+     [class.desktop]="(notMobile$ | async)">
+  <station-picker-desktop [form]="stationForm" *ngIf="(notMobile$ | async)"></station-picker-desktop>
+  <station-picker-mobile [form]="stationForm" *ngIf="(mobile$ | async)"></station-picker-mobile>
+</div>

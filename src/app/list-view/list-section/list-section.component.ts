@@ -5,7 +5,7 @@ import {
   OnInit
 } from "@angular/core";
 import { Station } from "../../core";
-import { LineColor, lineColors } from "@app/core/constants/common";
+import { lineColors } from "@app/core/constants/common";
 
 @Component({
   selector: "list-section",

@@ -9,7 +9,7 @@ import { ListViewModule } from "./list-view/list-view.module";
 import { MapViewModule } from "./map-view/map-view.module";
 import { reducers } from "@app/state/state";
 import { EffectsModule } from "@ngrx/effects";
-import { InitEffect } from "@app/state/init-state";
+import { InitEffect } from "@app/state/init-effects";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 import { WINDOW_PROVIDERS } from "@app/core/window.wrapper";

@@ -13,7 +13,6 @@ import { AppState } from "@app/state/state";
 import { PathService } from "@app/core";
 import { UPDATE_PATH } from "@app/state/path/path-actions";
 import { Subscription } from "rxjs/Subscription";
-import { UPDATE_LIST_VIEW } from "@app/state/list-view/list-view-actions";
 import { trigger } from "@angular/animations";
 import {
   FadeInTransition,
@@ -117,14 +116,6 @@ export class MapViewComponent implements OnInit, OnDestroy, AfterViewInit {
       deltaX: this.translate.x,
       deltaY: this.translate.y
     };
-  }
-  shrinkListView() {
-    this.store.dispatch({
-      type: UPDATE_LIST_VIEW,
-      payload: {
-        isExpanded: false
-      }
-    });
   }
   ngOnInit() {}
   ngOnDestroy() {

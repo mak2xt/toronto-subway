@@ -1,0 +1,26 @@
+<div (clickOutside)="shrink()"
+     [style.height]="viewProps.height"
+     class="container flex_container_column">
+  <div class="input-container flex_container_row">
+    <div class="input-row flex_container_row">
+      <tsbw-input [control]="controls.from"
+                  [placehld]="'from'"
+                  (click)="focus('from')"
+                  label="Start station"
+      ></tsbw-input>
+      <tsbw-input [control]="controls.to"
+                  [placehld]="'to'"
+                  (click)="focus('to')"
+                  label="Start station"
+      ></tsbw-input>
+    </div>
+  </div>
+  <div *ngIf="viewProps.expanded" class="list flex_container_column">
+    <div class="search-label">Search</div>
+    <div class="overflow">
+      <div class="item"
+           *ngFor="let item of list"
+           (click)="select(item.id)">{{item.label}}</div>
+    </div>
+  </div>
+</div>

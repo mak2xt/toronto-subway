@@ -1,6 +1,7 @@
 import { initialPickerState } from "@app/station-picker/state/state";
 import {
   PickerActions,
+  SWITCH_DROPDOWN_STATE,
   UPDATE_DROPDOWN_STATE,
   UPDATE_FORM_ERR,
   UPDATE_SELECTED_STATIONS
@@ -13,6 +14,12 @@ export function dropdownStateReducer(
   switch (action.type) {
     case UPDATE_DROPDOWN_STATE:
       return { ...state, ...action.payload };
+    case SWITCH_DROPDOWN_STATE:
+      let falsyState = {
+        from: false,
+        to: false
+      };
+      return { ...falsyState, ...action.payload };
     default:
       return state;
   }

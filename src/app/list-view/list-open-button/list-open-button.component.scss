@@ -1,0 +1,62 @@
+$hamburger__height: 30px / 1.8;
+$hamburger__width: 40px / 1.8;
+$hamburger__layer__height: 3px;
+$hamburger__colour: #000;
+
+// Structure
+.hamburger {
+  display: block;
+  position: absolute;
+  width: $hamburger__height;
+  height: $hamburger__width;
+  z-index: 2;
+}
+
+.hamburger__inner {
+  display: block;
+  width: $hamburger__width;
+  height: $hamburger__layer__height;
+  margin-top: $hamburger__layer__height * 2;
+  background: $hamburger__colour;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+
+  &::before, &::after {
+    display: block;
+    position: absolute;
+    content: "";
+    z-index: -1;
+    width: $hamburger__width;
+    height: $hamburger__layer__height;
+    background: $hamburger__colour;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+  &::before {
+    top: 0;
+  }
+  &::after {
+    top: $hamburger__layer__height * 4;
+  }
+}
+
+// Clicked State
+.hamburger--open {
+  .hamburger__inner {
+    background: none;
+
+    &::before, &::after {
+      top: $hamburger__layer__height * 2;
+    }
+    &::before {
+      -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+    &::after {
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+}

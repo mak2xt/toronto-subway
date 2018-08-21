@@ -48,7 +48,8 @@ export class PathService {
         }
 
         let weight = 1;
-        if (connection.id === "spa2") weight = 2;
+        //transfer is too long, always not worth it
+        if (connection.id === "spa2" || connection.id === "spa1") weight = 20;
         edges.push(new GraphEdge(node, connectionNode, weight));
       }
     }

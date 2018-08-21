@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { Station } from "@app/core";
 import { arrayObjectIndexOf } from "../../util/util";
@@ -6,9 +6,6 @@ import { DropdownInput } from "@app/shared/tsbw-dropdown/tsbw-dropdown.component
 import { StationPickerService } from "../station-picker.service";
 import { AppState } from "app/state/state";
 import { Store } from "@ngrx/store";
-import { UPDATE_PATH } from "@app/state/path/path-actions";
-import { PathService } from "@app/core/";
-import { UPDATE_LIST_VIEW } from "app/state/list-view/list-view-actions";
 import {
   DropdownState,
   FormErr,
@@ -28,12 +25,13 @@ import { map, withLatestFrom } from "rxjs/operators";
 import { Subscriptions, unsubscribeAll } from "@app/util/sub-management";
 
 @Component({
-  selector: "station-picker",
-  templateUrl: "station-picker.component.html",
+  selector: "station-picker-desktop",
+  templateUrl: "station-picker-desktop.component.html",
   providers: [StationPickerService],
-  styleUrls: ["./station-picker.component.scss"]
+  styleUrls: ["./station-picker-desktop.component.scss"]
 })
-export class StationPickerComponent implements OnInit, OnDestroy {
+export class StationPickerDesktopComponent implements OnInit, OnDestroy {
+  @Input() form: FormGroup;
   stationForm: FormGroup;
   fromControl: FormControl;
   toControl: FormControl;
@@ -49,57 +47,8 @@ export class StationPickerComponent implements OnInit, OnDestroy {
   subs: Subscriptions = {};
   constructor(
     private cService: StationPickerService,
-    private store: Store<AppState>,
-    private pathService: PathService
-  ) {
-    this.fromControl = new FormControl(null);
-    this.toControl = new FormControl(null);
-    this.stationForm = new FormGroup(
-      {
-        from: this.fromControl,
-        to: this.toControl
-      },
-      this.cService.stationValidator(["from", "to"])
-    );
-
-    this.subs.fromControl = this.fromControl.valueChanges.subscribe(value => {
-      this.dropdownStationsData.from = this.filterStationList(value);
-    });
-    this.subs.toControl = this.toControl.valueChanges.subscribe(value => {
-      this.dropdownStationsData.to = this.filterStationList(value);
-    });
-
-    this.dropdownState$ = this.store.select(selectDropdownState);
-    this.formErr$ = this.store.select(selectFormErr);
-
-    this.selectedStation$ = this.store.select(selectSelectedStation);
-
-    this.subs.submit = this.submit
-      .asObservable()
-      .pipe(withLatestFrom(this.selectedStation$), map(el => el[1]))
-      .subscribe((selectedStation: SelectedStations) => {
-        this.store.dispatch({
-          type: UPDATE_PATH,
-          payload: this.pathService.getPath(
-            this.stations,
-            selectedStation.from,
-            selectedStation.to
-          )
-        });
-        this.store.dispatch({
-          type: UPDATE_LIST_VIEW,
-          payload: {
-            isExpanded: true,
-            isHidden: false
-          }
-        });
-      });
-
-    this.subs.stations = this.store.select("stations").subscribe(stations => {
-      this.stations = stations;
-      this.onStationsChange();
-    });
-  }
+    private store: Store<AppState>
+  ) {}
   openDropdown(type: "from" | "to") {
     switch (type) {
       case "from":
@@ -115,21 +64,6 @@ export class StationPickerComponent implements OnInit, OnDestroy {
   }
   emptyInput(type: "from" | "to") {
     this.stationForm.get(type).reset("");
-  }
-  filterStationList(value: string): DropdownInput[] {
-    return this.stations.reduce(
-      (acc, cur) => {
-        let stationName = cur.name.toLowerCase();
-        if (stationName.indexOf(value.toLowerCase()) === 0) {
-          acc.push({
-            id: cur.id,
-            label: this.cService.shortifyStationName(cur.name)
-          });
-        }
-        return acc;
-      },
-      [] as DropdownInput[]
-    );
   }
   onStationSelected(event: DropdownInput, type: "from" | "to") {
     let station = this.stations[
@@ -172,5 +106,38 @@ export class StationPickerComponent implements OnInit, OnDestroy {
       from: [],
       to: []
     };
+    this.fromControl = this.form.controls.from as FormControl;
+    this.toControl = this.form.controls.to as FormControl;
+    this.stationForm = this.form;
+
+    this.subs.fromControl = this.fromControl.valueChanges.subscribe(value => {
+      this.dropdownStationsData.from = this.cService.filterStationList(
+        this.stations,
+        value
+      );
+    });
+    this.subs.toControl = this.toControl.valueChanges.subscribe(value => {
+      this.dropdownStationsData.to = this.cService.filterStationList(
+        this.stations,
+        value
+      );
+    });
+
+    this.dropdownState$ = this.store.select(selectDropdownState);
+    this.formErr$ = this.store.select(selectFormErr);
+
+    this.selectedStation$ = this.store.select(selectSelectedStation);
+
+    this.subs.submit = this.submit
+      .asObservable()
+      .pipe(withLatestFrom(this.selectedStation$), map(el => el[1]))
+      .subscribe((selectedStation: SelectedStations) => {
+        this.cService.publish(this.stations, selectedStation);
+      });
+
+    this.subs.stations = this.store.select("stations").subscribe(stations => {
+      this.stations = stations;
+      this.onStationsChange();
+    });
   }
 }

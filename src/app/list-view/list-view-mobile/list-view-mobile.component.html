@@ -1,0 +1,8 @@
+<div *ngIf="pathList.distance !== 0" class="container">
+  <list-open-button [open]="(open$ | async)" (click)="onHide()"></list-open-button>
+  <div role="list" *ngIf="(open$ | async)" [@slideInOut] class="list flex_container_column">
+    <list-section *ngFor="let item of pathList.stations"
+                  [station]="item"
+    ></list-section>
+  </div>
+</div>
