@@ -1,0 +1,51 @@
+{
+  "configVersion": 1,
+  "index": "/toronto-subway/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/toronto-subway/favicon.ico",
+        "/toronto-subway/index.html",
+        "/toronto-subway/inline.318b50c57b4eba3d437b.bundle.js",
+        "/toronto-subway/main.cec277a9a3750ff360d4.bundle.js",
+        "/toronto-subway/polyfills.50bc85a7eaeb6e6acfb4.bundle.js",
+        "/toronto-subway/styles.1d2a1a35c2841fc0d2c2.bundle.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/toronto-subway/assets/stations.json",
+        "/toronto-subway/assets/icon/android-icon-144x144.png",
+        "/toronto-subway/assets/icon/android-icon-192x192.png",
+        "/toronto-subway/assets/icon/android-icon-36x36.png",
+        "/toronto-subway/assets/icon/android-icon-48x48.png",
+        "/toronto-subway/assets/icon/android-icon-72x72.png",
+        "/toronto-subway/assets/icon/android-icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/toronto-subway/inline.318b50c57b4eba3d437b.bundle.js": "998c6060446975e566fd17509558ddc68d72eec3",
+    "/toronto-subway/assets/stations.json": "f233f49dbcfe83b5ab4bc7983570c90cd78ad424",
+    "/toronto-subway/main.cec277a9a3750ff360d4.bundle.js": "44067d41931cf675f2cf36059df0375a5ace4948",
+    "/toronto-subway/assets/icon/android-icon-144x144.png": "197796e12b22470285e31cb97c207d92322890f5",
+    "/toronto-subway/polyfills.50bc85a7eaeb6e6acfb4.bundle.js": "138162e30294574c49d02f57a0ae8f31acc0934d",
+    "/toronto-subway/assets/icon/android-icon-192x192.png": "73eef67ac0001ea8182f45aefd34e929f5c0ca4f",
+    "/toronto-subway/styles.1d2a1a35c2841fc0d2c2.bundle.css": "745704cb212ecd69eefa127bb072bc1211f6d0f1",
+    "/toronto-subway/assets/icon/android-icon-36x36.png": "b80ee97741cf2e1600f286807e31d00812a61a33",
+    "/toronto-subway/favicon.ico": "aab7c86845302b9819aa532e4c6dd0745be5153d",
+    "/toronto-subway/assets/icon/android-icon-48x48.png": "a655130b30de4e04838d51c336e7a684d2799850",
+    "/toronto-subway/index.html": "7f26c11d208ccba28f45e484f73afc12c598a7b3",
+    "/toronto-subway/assets/icon/android-icon-72x72.png": "3eb41b047b953ed88f5c2809f2c3805fdc80d35d",
+    "/toronto-subway/assets/icon/android-icon-96x96.png": "6b785f75499a4a8ea13234cfb3f53b1a20cdd16e"
+  }
+}
